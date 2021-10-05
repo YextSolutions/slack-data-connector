@@ -1,0 +1,12 @@
+{
+  "$id": "slack_numberOfMembers",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "description": "Number of members in the Slack channel.",
+  "displayName": "Number of Members",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "decimalType": {}
+  },
+  "typeId": "decimal"
+}

@@ -1,0 +1,75 @@
+{
+  "$id": "slack_slackUser",
+  "$schema": "https://schema.yext.com/config/km/field-presentation/v1",
+  "entityType": "slack_slackUser",
+  "displayName": "Slack User",
+  "presentationEntries": [
+    {
+      "displayName": "Content",
+      "entryType": "DIVIDER"
+    },
+    {
+      "displayName": "Core Information",
+      "entryType": "SECTION",
+      "fields": [
+        {
+          "id": "name",
+          "visibleOnAdd": true
+        },
+        {
+          "id": "entityId",
+          "visibleOnAdd": true
+        },
+        {
+          "id": "slack_displayName"
+        },
+        {
+          "id": "slack_slackAvatar"
+        },
+        {
+          "id": "slack_statusField"
+        },
+        {
+          "id": "emails"
+        },
+        {
+          "id": "slack_jobTitle"
+        },
+        {
+          "id": "slack_timezone"
+        },
+        {
+          "id": "slack_lastUpdated"
+        },
+        {
+          "id": "slack_teamID"
+        },
+        {
+          "id": "slack_isDeleted"
+        },
+        {
+          "id": "slack_isBot"
+        },
+        {
+          "id": "mainPhone"
+        }
+      ]
+    },
+    {
+      "displayName": "Other",
+      "entryType": "DIVIDER"
+    },
+    {
+      "displayName": "Internal Use Only",
+      "entryType": "SECTION",
+      "fields": [
+        {
+          "id": "folder"
+        },
+        {
+          "id": "labels"
+        }
+      ]
+    }
+  ]
+}

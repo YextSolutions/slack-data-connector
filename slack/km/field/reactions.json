@@ -1,0 +1,13 @@
+{
+  "$id": "slack_reactions",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Reactions",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "listType": {
+      "typeId": "slack_reactionsType"
+    }
+  },
+  "typeId": "list"
+}

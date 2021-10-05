@@ -1,0 +1,13 @@
+{
+  "$id": "slack_messages",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Messages",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "listType": {
+      "typeId": "slack_messages"
+    }
+  },
+  "typeId": "list"
+}

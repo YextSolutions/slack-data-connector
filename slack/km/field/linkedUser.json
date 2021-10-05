@@ -1,0 +1,20 @@
+{
+  "$id": "slack_linkedUser",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Linked User",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "listType": {
+      "typeId": "entityReference",
+      "type": {
+        "entityReferenceType": {
+            "supportedEntityTypeIds": [
+            "slack_slackChannel"
+          ]
+        }
+      }
+    }
+  },
+  "typeId": "list"
+}

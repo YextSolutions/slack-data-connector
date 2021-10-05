@@ -1,0 +1,58 @@
+{
+  "$id": "slack_slackChannel",
+  "$schema": "https://schema.yext.com/config/km/entity-type/v1",
+  "description": "",
+  "displayName": "Slack Channel",
+  "enabled": true,
+  "field": [
+    {
+      "id": "name",
+      "required": true
+    },
+    {
+      "id": "slack_purpose",
+      "required": false
+    },
+    {
+      "id": "slack_topic",
+      "required": false
+    },
+    {
+      "id": "slack_dateCreated",
+      "required": false
+    },
+    {
+      "id": "slack_isArchived",
+      "required": false
+    },
+    {
+      "id": "slack_isGeneral",
+      "required": false
+    },
+    {
+      "id": "slack_isPrivate",
+      "required": false
+    },
+    {
+      "id": "slack_numberOfMembers",
+      "required": false
+    },
+    {
+      "id": "slack_channelUrl",
+      "required": false
+    },
+    {
+      "id": "folder",
+      "required": false
+    },
+    {
+      "id": "labels",
+      "required": false
+    },
+    {
+      "id": "entityId",
+      "required": true
+    }
+  ],
+  "pluralDisplayName": ""
+}

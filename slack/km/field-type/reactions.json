@@ -1,0 +1,50 @@
+{
+  "$id": "slack_reactionsType",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "description": "Each Slack message can have multiple reactions and multiple users react with the same reaction.",
+  "displayName": "Reactions",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "reactionName",
+          "displayName": "Reaction Name",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "displayName": "Count",
+          "isRequired": false,
+          "typeId": "decimal",
+          "type": {
+            "decimalType": {}
+          }
+        },
+        {
+          "name": "linkedUser",
+          "displayName": "Linked User",
+          "isRequired": false,
+          "typeId": "list",
+          "type": {
+            "listType": {
+              "typeId": "entityReference",
+              "type": {
+                "entityReferenceType": {
+                  "supportedEntityTypeIds": [
+                    "slack_slackUser"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
