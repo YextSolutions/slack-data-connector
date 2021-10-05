@@ -1,5 +1,5 @@
 {
-  "$id": "c_replyCount",
+  "$id": "slack_replyCount",
   "$schema": "https://schema.yext.com/config/km/field/v1",
   "description": "",
   "displayName": "Reply Count",
