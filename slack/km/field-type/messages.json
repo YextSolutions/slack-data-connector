@@ -122,7 +122,7 @@
           "typeId": "list",
           "type": {
             "listType": {
-              "typeId": "slack_reactions_type"
+              "typeId": "slack_reactionsType"
             }
           }
         }
