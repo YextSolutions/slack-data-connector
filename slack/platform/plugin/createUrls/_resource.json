@@ -1,8 +1,4 @@
 {
   "$id": "slack_createUrls",
-  "$schema": "https://schema.yext.com/config/platform/plugin/v1",
-  "globals": {
-    "teamId": "${{teamId}}",
-    "workspaceName": "${{workspaceName}}"
-  }
+  "$schema": "https://schema.yext.com/config/platform/plugin/v1"
 }
