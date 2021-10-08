@@ -1,13 +1,14 @@
-declare var teamId: string;
 declare var workspaceName: string;
 
-export function createChannelUrl(channelID: string) {
-    var fullURL = "slack://channel?team=" + teamId + "&id=" + channelID
+export function createChannelUrl(idString: string) {
+    const ids = idString.split(",");
+    var fullURL = "slack://channel?team=" + ids[1] + "&id=" + ids[0];
     return fullURL
 }
 
-export function createMessageUrl(timestamp: string) {
-    var fullURL = "https://" + workspaceName + ".slack.com/archives/" + channelId + "/p" + timestamp
+export function createMessageUrl(idString: string) {
+    const ids = idString.split(",");
+    var fullURL = "https://" + workspaceName + ".slack.com/archives/" + ids[0] + "/p" + ids[0]
     return fullURL
 }
 
