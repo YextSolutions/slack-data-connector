@@ -10,7 +10,7 @@
       "type": {
         "entityReferenceType": {
             "supportedEntityTypeIds": [
-            "slack_slackChannel"
+            "slack_slackUser"
           ]
         }
       }
