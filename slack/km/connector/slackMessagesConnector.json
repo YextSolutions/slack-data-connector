@@ -1,0 +1,161 @@
+{
+  "$id": "slack_slackMessagesConnector",
+  "$schema": "https://schema.yext.com/config/km/connector/v2",
+  "displayName": "Slack Messages Connector",
+  "entityType": "slack_slackMessage",
+  "source": {
+    "sourceConfig": {
+      "apiPushConfig": {
+        "app": "58757",
+        "dataFormat": "JSON"
+      }
+    },
+    "baseSelector": {
+      "type": "JSON",
+      "header": "Entity Container",
+      "path": "messages"
+    },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "Message ID",
+        "path": "ts"
+      },
+      {
+        "type": "JSON",
+        "header": "Message Text",
+        "path": "text"
+      },
+      {
+        "type": "JSON",
+        "header": "Timestamp",
+        "path": "ts"
+      },
+      {
+        "type": "JSON",
+        "header": "User",
+        "path": "user"
+      },
+      {
+        "type": "JSON",
+        "header": "Team ID",
+        "path": "team"
+      },
+      {
+        "type": "JSON",
+        "header": "Is Pinned",
+        "path": "pinned_info.pinned_ts"
+      },
+      {
+        "type": "JSON",
+        "header": "Channel ID",
+        "path": "channelId"
+      },
+      {
+        "type": "JSON",
+        "header": "Thread Timestamp",
+        "path": "thread_ts"
+      },
+      {
+        "type": "JSON",
+        "header": "Name",
+        "path": "text"
+      }
+    ]
+  },
+  "transforms": [
+    {
+      "mergeColumns": {
+        "inputHeaders": [
+          "Channel ID",
+          "Timestamp"
+        ],
+        "newColumnHeader": "Message URL",
+        "delimiter": ","
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Message URL"
+          ]
+        },
+        "plugin": "slack_createUrls",
+        "function": "createMessageUrl"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Is Pinned"
+          ]
+        },
+        "valueToFind": {
+          "regex": ".+"
+        },
+        "replacement": "true"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Is Pinned"
+          ]
+        },
+        "valueToFind": {
+          "regex": "^$"
+        },
+        "replacement": "false"
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "field": "slack_messageURL",
+      "header": "Message URL",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_linkedUser",
+      "header": "User",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_slackChannel",
+      "header": "Channel ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_messageText",
+      "header": "Message Text",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_messageTimestamp",
+      "header": "Timestamp",
+      "subfieldPath": []
+    },
+    {
+      "field": "entityId",
+      "header": "Message ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_isPinned",
+      "header": "Is Pinned",
+      "subfieldPath": []
+    },
+    {
+      "field": "name",
+      "header": "Name",
+      "subfieldPath": []
+    }
+  ],
+  "scheduleConfig": {
+    "useSourceSchedule": true,
+    "runMode": "DEFAULT"
+  }
+}
