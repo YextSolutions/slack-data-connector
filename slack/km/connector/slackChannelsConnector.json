@@ -1,0 +1,177 @@
+{
+  "$id": "slack_slackChannelsConnector",
+  "$schema": "https://schema.yext.com/config/km/connector/v2",
+  "displayName": "Slack Channels Connector",
+  "entityType": "slack_slackChannel",
+  "source": {
+    "sourceConfig": {
+      "apiPushConfig": {
+        "app": "58757",
+        "dataFormat": "JSON"
+      }
+    },
+    "baseSelector": {
+      "type": "JSON",
+      "header": "Entity Container",
+      "path": "channels"
+    },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "Channel ID",
+        "path": "id"
+      },
+      {
+        "type": "JSON",
+        "header": "Channel Name",
+        "path": "name"
+      },
+      {
+        "type": "JSON",
+        "header": "Channel Purpose",
+        "path": "purpose.value"
+      },
+      {
+        "type": "JSON",
+        "header": "Channel Topic",
+        "path": "topic.value"
+      },
+      {
+        "type": "JSON",
+        "header": "Number of Members",
+        "path": "num_members"
+      },
+      {
+        "type": "JSON",
+        "header": "Is Archived",
+        "path": "is_archived"
+      },
+      {
+        "type": "JSON",
+        "header": "Is Private",
+        "path": "is_private"
+      },
+      {
+        "type": "JSON",
+        "header": "Is General",
+        "path": "is_general"
+      },
+      {
+        "type": "JSON",
+        "header": "Created Date",
+        "path": "created"
+      },
+      {
+        "type": "JSON",
+        "header": "Internal Team IDs",
+        "path": "internal_team_ids"
+      },
+      {
+        "type": "JSON",
+        "header": "Shared Team IDs",
+        "path": "shared_team_ids"
+      }
+    ]
+  },
+  "transforms": [
+    {
+      "mergeColumns": {
+        "inputHeaders": [
+          "Channel ID",
+          "Internal Team IDs"
+        ],
+        "newColumnHeader": "Channel Url",
+        "delimiter": ","
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Channel Url"
+          ]
+        },
+        "plugin": "slack_createUrls",
+        "function": "createChannelUrl"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Channel Name"
+          ]
+        },
+        "plugin": "slack_addHash",
+        "function": "prependHash"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Created Date"
+          ]
+        },
+        "plugin": "slack_formatDates",
+        "function": "formatDate"
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "field": "entityId",
+      "header": "Channel ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_isPrivate",
+      "header": "Is Private",
+      "subfieldPath": []
+    },
+    {
+      "field": "name",
+      "header": "Channel Name",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_isGeneral",
+      "header": "Is General",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_dateCreated",
+      "header": "Created Date",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_topic",
+      "header": "Channel Topic",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_isArchived",
+      "header": "Is Archived",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_purpose",
+      "header": "Channel Purpose",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_channelUrl",
+      "header": "Channel Url",
+      "subfieldPath": []
+    },
+    {
+      "field": "slack_numberOfMembers",
+      "header": "Number of Members",
+      "subfieldPath": []
+    }
+  ],
+  "scheduleConfig": {
+    "useSourceSchedule": true,
+    "runMode": "DEFAULT"
+  }
+}
