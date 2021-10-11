@@ -8,7 +8,7 @@ export function createChannelUrl(idString: string) {
 
 export function createMessageUrl(idString: string) {
     const ids = idString.split(",");
-    var fullURL = "https://" + workspaceName + ".slack.com/archives/" + ids[0] + "/p" + ids[0]
+    var fullURL = "https://" + workspaceName + ".slack.com/archives/" + ids[0] + "/p" + ids[1]
     return fullURL
 }
 
