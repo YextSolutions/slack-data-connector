@@ -60,6 +60,41 @@
         "type": "JSON",
         "header": "Name",
         "path": "text"
+      },
+      {
+        "type": "JSON",
+        "header": "Reaction Names",
+        "path": "reactions[*].name"
+      },
+      {
+        "type": "JSON",
+        "header": "Reaction Counts",
+        "path": "reactions[*].count"
+      },
+      {
+        "type": "JSON",
+        "header": "Reaction Users",
+        "path": "reactions[*].users[*]"
+      },
+      {
+        "type": "JSON",
+        "header": "Reply Timestamps",
+        "path": "replies[*].ts"
+      },
+      {
+        "type": "JSON",
+        "header": "Reply Texts",
+        "path": "replies[*].text"
+      },
+      {
+        "type": "JSON",
+        "header": "Reply Users",
+        "path": "replies[*].user"
+      },
+      {
+        "type": "JSON",
+        "header": "Reply IDs",
+        "path": "replies[*].ts"
       }
     ]
   },
@@ -129,6 +164,33 @@
       "subfieldPath": []
     },
     {
+      "field": "slack_reactions",
+      "header": "Reaction Users",
+      "subfieldPath": [
+        {
+          "name": "linkedUser"
+        }
+      ]
+    },
+    {
+      "field": "slack_reactions",
+      "header": "Reaction Counts",
+      "subfieldPath": [
+        {
+          "name": "count"
+        }
+      ]
+    },
+    {
+      "field": "slack_reactions",
+      "header": "Reaction Names",
+      "subfieldPath": [
+        {
+          "name": "reactionName"
+        }
+      ]
+    },
+    {
       "field": "slack_messageText",
       "header": "Message Text",
       "subfieldPath": []
@@ -152,6 +214,42 @@
       "field": "name",
       "header": "Name",
       "subfieldPath": []
+    },
+    {
+      "field": "slack_messages",
+      "header": "Reply Timestamps",
+      "subfieldPath": [
+        {
+          "name": "timestamp"
+        }
+      ]
+    },
+    {
+      "field": "slack_messages",
+      "header": "Reply Texts",
+      "subfieldPath": [
+        {
+          "name": "messageText"
+        }
+      ]
+    },
+    {
+      "field": "slack_messages",
+      "header": "Reply Users",
+      "subfieldPath": [
+        {
+          "name": "linkedUser"
+        }
+      ]
+    },
+    {
+      "field": "slack_messages",
+      "header": "Reply IDs",
+      "subfieldPath": [
+        {
+          "name": "messageID"
+        }
+      ]
     }
   ],
   "scheduleConfig": {
