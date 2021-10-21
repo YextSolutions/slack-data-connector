@@ -25,24 +25,6 @@
           "type": {
             "decimalType": {}
           }
-        },
-        {
-          "name": "linkedUser",
-          "displayName": "Linked User",
-          "isRequired": false,
-          "typeId": "list",
-          "type": {
-            "listType": {
-              "typeId": "entityReference",
-              "type": {
-                "entityReferenceType": {
-                  "supportedEntityTypeIds": [
-                    "slack_slackUser"
-                  ]
-                }
-              }
-            }
-          }
         }
       ]
     }
