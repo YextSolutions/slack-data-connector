@@ -73,11 +73,6 @@
       },
       {
         "type": "JSON",
-        "header": "Reaction Users",
-        "path": "reactions[*].users[*]"
-      },
-      {
-        "type": "JSON",
         "header": "Reply Timestamps",
         "path": "replies[*].ts"
       },
@@ -162,15 +157,6 @@
       "field": "slack_slackChannel",
       "header": "Channel ID",
       "subfieldPath": []
-    },
-    {
-      "field": "slack_reactions",
-      "header": "Reaction Users",
-      "subfieldPath": [
-        {
-          "name": "linkedUser"
-        }
-      ]
     },
     {
       "field": "slack_reactions",
