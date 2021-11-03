@@ -70,6 +70,11 @@
         "type": "JSON",
         "header": "Shared Team IDs",
         "path": "shared_team_ids"
+      },
+      {
+        "type": "JSON",
+        "header": "Team ID",
+        "path": "teamId"
       }
     ]
   },
@@ -78,7 +83,7 @@
       "mergeColumns": {
         "inputHeaders": [
           "Channel ID",
-          "Internal Team IDs"
+          "Team ID"
         ],
         "newColumnHeader": "Channel Url",
         "delimiter": ","
