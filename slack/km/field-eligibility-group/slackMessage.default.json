@@ -1,0 +1,16 @@
+{
+  "$id": "slack_slackMessage.default",
+  "$schema": "https://schema.yext.com/config/km/field-eligibility-group/v1",
+  "name": "Slack Message-default",
+  "entityType": "slack_slackMessage",
+  "fields": [
+    "slack_slackChannel",
+    "slack_isPinned",
+    "slack_linkedUser",
+    "slack_messageText",
+    "slack_messageTimestamp",
+    "slack_messageURL",
+    "slack_messages",
+    "slack_reactions"
+  ]
+}
