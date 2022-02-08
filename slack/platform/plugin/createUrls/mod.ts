@@ -13,6 +13,6 @@ export function createMessageUrl(idString: string) {
 }
 
 export function createThreadUrl(timestamp: string) {
-    var fullURL = "https://" + workspaceName + ".slack.com/archives/" + channelId + "/p" + timestamp + "?thread_ts=" + threadTimestamp "&cid=" + channelId
+    var fullURL = "https://" + workspaceName + ".slack.com/archives/" + channelId + "/p" + timestamp + "?thread_ts=" + threadTimestamp + "&cid=" + channelId
     return fullURL
 }
