@@ -1,58 +1,7 @@
 {
   "$id": "slack_slackMessage",
-  "$schema": "https://schema.yext.com/config/km/entity-type/v1",
+  "$schema": "https://schema.yext.com/config/km/entity-type/v2",
   "description": "",
   "displayName": "Slack Message",
-  "enabled": true,
-  "field": [
-    {
-      "id": "name",
-      "required": true
-    },
-    {
-      "id": "slack_slackChannel",
-      "required": false
-    },
-    {
-      "id": "slack_isPinned",
-      "required": false
-    },
-    {
-      "id": "slack_linkedUser",
-      "required": false
-    },
-    {
-      "id": "slack_messageText",
-      "required": false
-    },
-    {
-      "id": "slack_messageTimestamp",
-      "required": false
-    },
-    {
-      "id": "slack_messageURL",
-      "required": false
-    },
-    {
-      "id": "slack_messages",
-      "required": false
-    },
-    {
-      "id": "slack_reactions",
-      "required": false
-    },
-    {
-      "id": "folder",
-      "required": false
-    },
-    {
-      "id": "labels",
-      "required": false
-    },
-    {
-      "id": "entityId",
-      "required": true
-    }
-  ],
   "pluralDisplayName": ""
 }
