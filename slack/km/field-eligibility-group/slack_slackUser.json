@@ -1,7 +1,7 @@
 {
-  "$id": "slack_slackUser.default",
+  "$id": "slack_slackUser",
   "$schema": "https://schema.yext.com/config/km/field-eligibility-group/v1",
-  "name": "Slack User-default",
+  "name": "Slack User",
   "entityType": "slack_slackUser",
   "fields": [
     "slack_displayName",
