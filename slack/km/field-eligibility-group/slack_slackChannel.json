@@ -1,7 +1,7 @@
 {
-  "$id": "slack_slackChannel.default",
+  "$id": "slack_slackChannel",
   "$schema": "https://schema.yext.com/config/km/field-eligibility-group/v1",
-  "name": "Slack Channel-default",
+  "name": "Slack Channel",
   "entityType": "slack_slackChannel",
   "fields": [
     "slack_purpose",
