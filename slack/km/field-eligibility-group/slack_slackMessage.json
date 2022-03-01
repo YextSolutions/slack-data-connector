@@ -1,7 +1,7 @@
 {
-  "$id": "slack_slackMessage.default",
+  "$id": "slack_slackMessage",
   "$schema": "https://schema.yext.com/config/km/field-eligibility-group/v1",
-  "name": "Slack Message-default",
+  "name": "Slack Message",
   "entityType": "slack_slackMessage",
   "fields": [
     "slack_slackChannel",
