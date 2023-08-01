@@ -183,6 +183,9 @@
             "header": "Message Text",
             "subfieldPath": [
                 {
+                    "name":"messageText"
+                },
+                {
                     "name": "markdown"
                 }
             ]
@@ -221,7 +224,10 @@
             "header": "Reply Texts",
             "subfieldPath": [
                 {
-                    "name": "messageText"
+                    "name":"messageText"
+                },
+                {
+                    "name": "markdown"
                 }
             ]
         },
