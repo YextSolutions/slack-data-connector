@@ -1,72 +1,72 @@
 {
-  "$id": "slack_slackChannel",
-  "$schema": "https://schema.yext.com/config/km/field-presentation/v1",
-  "entityType": "slack_slackChannel",
-  "displayName": "Slack Channel",
-  "presentationEntries": [
-    {
-      "displayName": "Content",
-      "entryType": "DIVIDER"
-    },
-    {
-      "displayName": "Core Information",
-      "entryType": "SECTION",
-      "fields": [
+    "$id": "slack_slackChannel",
+    "$schema": "https://schema.yext.com/config/km/field-presentation/v1",
+    "entityType": "slack_slackChannel",
+    "displayName": "Slack Channel",
+    "presentationEntries": [
         {
-          "id": "name",
-          "visibleOnAdd": true
+            "displayName": "Content",
+            "entryType": "DIVIDER"
         },
         {
-          "id": "entityId",
-          "visibleOnAdd": true
+            "displayName": "Core Information",
+            "entryType": "SECTION",
+            "fields": [
+                {
+                    "id": "name",
+                    "visibleOnAdd": true
+                },
+                {
+                    "id": "entityId",
+                    "visibleOnAdd": true
+                },
+                {
+                    "id": "slack_channelUrl"
+                },
+                {
+                    "id": "slack_purpose"
+                },
+                {
+                    "id": "slack_topic"
+                }
+            ]
         },
         {
-          "id": "slack_channelUrl"
+            "displayName": "Message Metadata",
+            "entryType": "SECTION",
+            "fields": [
+                {
+                    "id": "slack_isArchived"
+                },
+                {
+                    "id": "slack_isGeneral"
+                },
+                {
+                    "id": "slack_isPrivate"
+                },
+                {
+                    "id": "slack_numberOfMembers"
+                },
+                {
+                    "id": "slack_dateCreated"
+                }
+            ]
         },
         {
-          "id": "slack_purpose"
+            "displayName": "Other",
+            "entryType": "DIVIDER"
         },
         {
-          "id": "slack_topic"
+            "displayName": "Internal Use Only",
+            "entryType": "SECTION",
+            "fields": [
+                {
+                    "id": "folder"
+                },
+                {
+                    "id": "labels"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "displayName": "Message Metadata",
-      "entryType": "SECTION",
-      "fields": [
-        {
-          "id": "slack_isArchived"
-        },
-        {
-          "id": "slack_isGeneral"
-        },
-        {
-          "id": "slack_isPrivate"
-        },
-        {
-          "id": "slack_numberOfMembers"
-        },
-        {
-          "id": "slack_dateCreated"
-        }
-      ]
-    },
-    {
-      "displayName": "Other",
-      "entryType": "DIVIDER"
-    },
-    {
-      "displayName": "Internal Use Only",
-      "entryType": "SECTION",
-      "fields": [
-        {
-          "id": "folder"
-        },
-        {
-          "id": "labels"
-        }
-      ]
-    }
-  ]
+    ]
 }

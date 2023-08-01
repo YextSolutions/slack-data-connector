@@ -1,132 +1,116 @@
 {
-  "$id": "slack_messages",
-  "$schema": "https://schema.yext.com/config/km/field-type/v1",
-  "description": "",
-  "displayName": "Messages",
-  "type": {
-    "structType": {
-      "property": [
-        {
-          "name": "messageID",
-          "displayName": "Message ID",
-          "isRequired": false,
-          "typeId": "string",
-          "type": {
-            "stringType": {
-              "stereotype": "SIMPLE"
-            }
-          }
-        },
-        {
-          "name": "messageText",
-          "displayName": "Message Text",
-          "isRequired": false,
-          "typeId": "richText",
-          "type": {
-            "richTextType": {
-              "supportedFormat": [
-                "BLOCK_QUOTE",
-                "BOLD",
-                "BULLETED_LIST",
-                "CODE_BLOCK",
-                "CODE_SPAN",
-                "HEADINGS",
-                "HORIZONTAL_LINE",
-                "HYPERLINK",
-                "IMAGE",
-                "ITALICS",
-                "NUMBERED_LIST",
-                "STRIKETHROUGH",
-                "SUBSCRIPT",
-                "SUPERSCRIPT",
-                "UNDERLINE"
-              ]
-            }
-          }
-        },
-        {
-          "name": "attachedLinks",
-          "displayName": "Attached Links",
-          "isRequired": false,
-          "typeId": "string",
-          "type": {
-            "stringType": {
-              "stereotype": "URL"
-            }
-          }
-        },
-        {
-          "name": "linkedUser",
-          "displayName": "Linked User",
-          "isRequired": false,
-          "typeId": "list",
-          "type": {
-            "listType": {
-              "typeId": "entityReference",
-              "type": {
-                "entityReferenceType": {
-                  "supportedEntityTypeIds": [
-                    "slack_slackUser"
-                  ]
+    "$id": "slack_messages",
+    "$schema": "https://schema.yext.com/config/km/field-type/v1",
+    "description": "",
+    "displayName": "Messages",
+    "type": {
+        "structType": {
+            "property": [
+                {
+                    "name": "messageID",
+                    "displayName": "Message ID",
+                    "isRequired": false,
+                    "typeId": "string",
+                    "type": {
+                        "stringType": {
+                            "stereotype": "SIMPLE"
+                        }
+                    }
+                },
+                {
+                    "name": "messageText",
+                    "displayName": "Message Text",
+                    "isRequired": false,
+                    "typeId": "markdown",
+                    "type": {
+                        "markdownType": {
+                            "maxLength": 100000
+                        }
+                    }
+                },
+                {
+                    "name": "attachedLinks",
+                    "displayName": "Attached Links",
+                    "isRequired": false,
+                    "typeId": "string",
+                    "type": {
+                        "stringType": {
+                            "stereotype": "URL"
+                        }
+                    }
+                },
+                {
+                    "name": "linkedUser",
+                    "displayName": "Linked User",
+                    "isRequired": false,
+                    "typeId": "list",
+                    "type": {
+                        "listType": {
+                            "typeId": "entityReference",
+                            "type": {
+                                "entityReferenceType": {
+                                    "supportedEntityTypeIds": [
+                                        "slack_slackUser"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "isPinned",
+                    "displayName": "Is Pinned",
+                    "isRequired": false,
+                    "typeId": "string",
+                    "type": {
+                        "stringType": {
+                            "stereotype": "SIMPLE"
+                        }
+                    }
+                },
+                {
+                    "name": "replyCount",
+                    "displayName": "Reply Count",
+                    "isRequired": false,
+                    "typeId": "decimal",
+                    "type": {
+                        "decimalType": {}
+                    }
+                },
+                {
+                    "name": "linkToMessageInSlack",
+                    "displayName": "Link to Message in Slack",
+                    "isRequired": false,
+                    "typeId": "string",
+                    "type": {
+                        "stringType": {
+                            "stereotype": "SIMPLE"
+                        }
+                    }
+                },
+                {
+                    "name": "timestamp",
+                    "displayName": "Timestamp",
+                    "isRequired": false,
+                    "typeId": "string",
+                    "type": {
+                        "stringType": {
+                            "stereotype": "SIMPLE"
+                        }
+                    }
+                },
+                {
+                    "name": "reactions",
+                    "displayName": "Reactions",
+                    "isRequired": false,
+                    "typeId": "list",
+                    "type": {
+                        "listType": {
+                            "typeId": "slack_reactionsType"
+                        }
+                    }
                 }
-              }
-            }
-          }
-        },
-        {
-          "name": "isPinned",
-          "displayName": "Is Pinned",
-          "isRequired": false,
-          "typeId": "string",
-          "type": {
-            "stringType": {
-              "stereotype": "SIMPLE"
-            }
-          }
-        },
-        {
-          "name": "replyCount",
-          "displayName": "Reply Count",
-          "isRequired": false,
-          "typeId": "decimal",
-          "type": {
-            "decimalType": {}
-          }
-        },
-        {
-          "name": "linkToMessageInSlack",
-          "displayName": "Link to Message in Slack",
-          "isRequired": false,
-          "typeId": "string",
-          "type": {
-            "stringType": {
-              "stereotype": "SIMPLE"
-            }
-          }
-        },
-        {
-          "name": "timestamp",
-          "displayName": "Timestamp",
-          "isRequired": false,
-          "typeId": "string",
-          "type": {
-            "stringType": {
-              "stereotype": "SIMPLE"
-            }
-          }
-        },
-        {
-          "name": "reactions",
-          "displayName": "Reactions",
-          "isRequired": false,
-          "typeId": "list",
-          "type": {
-            "listType": {
-              "typeId": "slack_reactionsType"
-            }
-          }
+            ]
         }
-      ]
     }
-  }
 }

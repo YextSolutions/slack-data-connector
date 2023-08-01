@@ -1,203 +1,208 @@
 {
-  "$id": "slack_slackUsersConnector",
-  "$schema": "https://schema.yext.com/config/km/connector/v2",
-  "displayName": "Slack Users Connector",
-  "entityType": "slack_slackUser",
-  "source": {
-    "sourceConfig": {
-      "apiPushConfig": {
-        "app": "58757",
-        "dataFormat": "JSON",
-        "enabled": true
-      }
-    },
-    "baseSelector": {
-      "type": "JSON",
-      "header": "Entity Container",
-      "path": "users"
-    },
-    "selectors": [
-      {
-        "type": "JSON",
-        "header": "User ID",
-        "path": "id"
-      },
-      {
-        "type": "JSON",
-        "header": "User Display name",
-        "path": "name"
-      },
-      {
-        "type": "JSON",
-        "header": "User Picture",
-        "path": "profile.image_72"
-      },
-      {
-        "type": "JSON",
-        "header": "User Real Name",
-        "path": "real_name"
-      },
-      {
-        "type": "JSON",
-        "header": "Email",
-        "path": "email"
-      },
-      {
-        "type": "JSON",
-        "header": "Team ID",
-        "path": "team_id"
-      },
-      {
-        "type": "JSON",
-        "header": "Is Deleted",
-        "path": "deleted"
-      },
-      {
-        "type": "JSON",
-        "header": "Is Bot",
-        "path": "is_bot"
-      },
-      {
-        "type": "JSON",
-        "header": "Last Updated",
-        "path": "updated"
-      },
-      {
-        "type": "JSON",
-        "header": "Timezone",
-        "path": "tz"
-      },
-      {
-        "type": "JSON",
-        "header": "Phone",
-        "path": "phone"
-      },
-      {
-        "type": "JSON",
-        "header": "Job Title",
-        "path": "title"
-      },
-      {
-        "type": "JSON",
-        "header": "Status",
-        "path": "status_text"
-      },
-      {
-        "type": "JSON",
-        "header": "Status Emoji",
-        "path": "status_emoji"
-      },
-      {
-        "type": "JSON",
-        "header": "Status Expiration",
-        "path": "status_expiration"
-      }
-    ]
-  },
-  "transforms": [
-    {
-      "function": {
-        "inputHeaders": {
-          "headers": [
-            "Last Updated"
-          ]
+    "$id": "slack_slackUsersConnector",
+    "$schema": "https://schema.yext.com/config/km/connector/v4",
+    "displayName": "Slack Users Connector",
+    "entityTypes": [
+        "slack_slackUser"
+    ],
+    "source": {
+        "sourceConfig": {
+            "apiPushConfig": {
+                "dataFormat": "JSON",
+                "enabled": true
+            }
         },
-        "plugin": "slack_formatDates",
-        "function": "formatDate"
-      }
+        "baseSelector": {
+            "type": "JSON",
+            "header": "Entity Container",
+            "path": "users"
+        },
+        "selectors": [
+            {
+                "type": "JSON",
+                "header": "User ID",
+                "path": "id"
+            },
+            {
+                "type": "JSON",
+                "header": "User Display name",
+                "path": "name"
+            },
+            {
+                "type": "JSON",
+                "header": "User Picture",
+                "path": "profile.image_72"
+            },
+            {
+                "type": "JSON",
+                "header": "User Real Name",
+                "path": "real_name"
+            },
+            {
+                "type": "JSON",
+                "header": "Email",
+                "path": "email"
+            },
+            {
+                "type": "JSON",
+                "header": "Team ID",
+                "path": "team_id"
+            },
+            {
+                "type": "JSON",
+                "header": "Is Deleted",
+                "path": "deleted"
+            },
+            {
+                "type": "JSON",
+                "header": "Is Bot",
+                "path": "is_bot"
+            },
+            {
+                "type": "JSON",
+                "header": "Last Updated",
+                "path": "updated"
+            },
+            {
+                "type": "JSON",
+                "header": "Timezone",
+                "path": "tz"
+            },
+            {
+                "type": "JSON",
+                "header": "Phone",
+                "path": "phone"
+            },
+            {
+                "type": "JSON",
+                "header": "Job Title",
+                "path": "title"
+            },
+            {
+                "type": "JSON",
+                "header": "Status",
+                "path": "status_text"
+            },
+            {
+                "type": "JSON",
+                "header": "Status Emoji",
+                "path": "status_emoji"
+            },
+            {
+                "type": "JSON",
+                "header": "Status Expiration",
+                "path": "status_expiration"
+            }
+        ]
+    },
+    "transforms": [
+        {
+            "function": {
+                "inputHeaders": {
+                    "headers": [
+                        "Last Updated"
+                    ]
+                },
+                "plugin": "slack_formatDates",
+                "function": "formatDate"
+            }
+        }
+    ],
+    "mappings": [
+        {
+            "field": "slack_timezone",
+            "header": "Timezone",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_statusField",
+            "header": "Status",
+            "subfieldPath": [
+                {
+                    "name": "statusText"
+                }
+            ]
+        },
+        {
+            "field": "entityId",
+            "header": "User ID",
+            "subfieldPath": []
+        },
+        {
+            "field": "emails",
+            "header": "Email",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_displayName",
+            "header": "User Display name",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_isBot",
+            "header": "Is Bot",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_statusField",
+            "header": "Status Expiration",
+            "subfieldPath": [
+                {
+                    "name": "statusExpiration"
+                }
+            ]
+        },
+        {
+            "field": "slack_jobTitle",
+            "header": "Job Title",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_slackAvatar",
+            "header": "User Picture",
+            "subfieldPath": [
+                {
+                    "name": "url"
+                }
+            ]
+        },
+        {
+            "field": "slack_teamID",
+            "header": "Team ID",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_isDeleted",
+            "header": "Is Deleted",
+            "subfieldPath": []
+        },
+        {
+            "field": "name",
+            "header": "User Real Name",
+            "subfieldPath": []
+        },
+        {
+            "field": "mainPhone",
+            "header": "Phone",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_statusField",
+            "header": "Status Emoji",
+            "subfieldPath": [
+                {
+                    "name": "statusEmoji"
+                }
+            ]
+        },
+        {
+            "field": "slack_lastUpdated",
+            "header": "Last Updated",
+            "subfieldPath": []
+        }
+    ],
+    "comprehensiveModeConfig": {
+        "comprehensiveSet": "ENTITIES_CREATED_BY_THIS_CONNECTOR",
+        "actionOnMissingEntities": "DELETE"
     }
-  ],
-  "mappings": [
-    {
-      "field": "slack_timezone",
-      "header": "Timezone",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_statusField",
-      "header": "Status",
-      "subfieldPath": [
-        {
-          "name": "statusText"
-        }
-      ]
-    },
-    {
-      "field": "entityId",
-      "header": "User ID",
-      "subfieldPath": []
-    },
-    {
-      "field": "emails",
-      "header": "Email",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_displayName",
-      "header": "User Display name",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_isBot",
-      "header": "Is Bot",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_statusField",
-      "header": "Status Expiration",
-      "subfieldPath": [
-        {
-          "name": "statusExpiration"
-        }
-      ]
-    },
-    {
-      "field": "slack_jobTitle",
-      "header": "Job Title",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_slackAvatar",
-      "header": "User Picture",
-      "subfieldPath": [
-        {
-          "name": "url"
-        }
-      ]
-    },
-    {
-      "field": "slack_teamID",
-      "header": "Team ID",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_isDeleted",
-      "header": "Is Deleted",
-      "subfieldPath": []
-    },
-    {
-      "field": "name",
-      "header": "User Real Name",
-      "subfieldPath": []
-    },
-    {
-      "field": "mainPhone",
-      "header": "Phone",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_statusField",
-      "header": "Status Emoji",
-      "subfieldPath": [
-        {
-          "name": "statusEmoji"
-        }
-      ]
-    },
-    {
-      "field": "slack_lastUpdated",
-      "header": "Last Updated",
-      "subfieldPath": []
-    }
-  ]
 }

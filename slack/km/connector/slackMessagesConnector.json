@@ -1,242 +1,251 @@
 {
-  "$id": "slack_slackMessagesConnector",
-  "$schema": "https://schema.yext.com/config/km/connector/v2",
-  "displayName": "Slack Messages Connector",
-  "entityType": "slack_slackMessage",
-  "source": {
-    "sourceConfig": {
-      "apiPushConfig": {
-        "app": "58757",
-        "dataFormat": "JSON",
-        "enabled": true
-      }
-    },
-    "baseSelector": {
-      "type": "JSON",
-      "header": "Entity Container",
-      "path": "messages"
-    },
-    "selectors": [
-      {
-        "type": "JSON",
-        "header": "Message ID",
-        "path": "ts"
-      },
-      {
-        "type": "JSON",
-        "header": "Message Text",
-        "path": "text"
-      },
-      {
-        "type": "JSON",
-        "header": "Timestamp",
-        "path": "ts"
-      },
-      {
-        "type": "JSON",
-        "header": "User",
-        "path": "user"
-      },
-      {
-        "type": "JSON",
-        "header": "Team ID",
-        "path": "team"
-      },
-      {
-        "type": "JSON",
-        "header": "Is Pinned",
-        "path": "pinned_info.pinned_ts"
-      },
-      {
-        "type": "JSON",
-        "header": "Channel ID",
-        "path": "channelId"
-      },
-      {
-        "type": "JSON",
-        "header": "Thread Timestamp",
-        "path": "thread_ts"
-      },
-      {
-        "type": "JSON",
-        "header": "Name",
-        "path": "text"
-      },
-      {
-        "type": "JSON",
-        "header": "Reaction Names",
-        "path": "reactions[*].name"
-      },
-      {
-        "type": "JSON",
-        "header": "Reaction Counts",
-        "path": "reactions[*].count"
-      },
-      {
-        "type": "JSON",
-        "header": "Reply Timestamps",
-        "path": "replies[*].ts"
-      },
-      {
-        "type": "JSON",
-        "header": "Reply Texts",
-        "path": "replies[*].text"
-      },
-      {
-        "type": "JSON",
-        "header": "Reply Users",
-        "path": "replies[*].user"
-      },
-      {
-        "type": "JSON",
-        "header": "Reply IDs",
-        "path": "replies[*].ts"
-      }
-    ]
-  },
-  "transforms": [
-    {
-      "mergeColumns": {
-        "inputHeaders": [
-          "Channel ID",
-          "Timestamp"
-        ],
-        "newColumnHeader": "Message URL",
-        "delimiter": ","
-      }
-    },
-    {
-      "function": {
-        "inputHeaders": {
-          "headers": [
-            "Message URL"
-          ]
+    "$id": "slack_slackMessagesConnector",
+    "$schema": "https://schema.yext.com/config/km/connector/v4",
+    "displayName": "Slack Messages Connector",
+    "entityTypes": [
+        "slack_slackMessage"
+    ],
+    "source": {
+        "sourceConfig": {
+            "apiPushConfig": {
+                "dataFormat": "JSON",
+                "enabled": true
+            }
         },
-        "plugin": "slack_createUrls",
-        "function": "createMessageUrl"
-      }
+        "baseSelector": {
+            "type": "JSON",
+            "header": "Entity Container",
+            "path": "messages"
+        },
+        "selectors": [
+            {
+                "type": "JSON",
+                "header": "Message ID",
+                "path": "ts"
+            },
+            {
+                "type": "JSON",
+                "header": "Message Text",
+                "path": "text"
+            },
+            {
+                "type": "JSON",
+                "header": "Timestamp",
+                "path": "ts"
+            },
+            {
+                "type": "JSON",
+                "header": "User",
+                "path": "user"
+            },
+            {
+                "type": "JSON",
+                "header": "Team ID",
+                "path": "team"
+            },
+            {
+                "type": "JSON",
+                "header": "Is Pinned",
+                "path": "pinned_info.pinned_ts"
+            },
+            {
+                "type": "JSON",
+                "header": "Channel ID",
+                "path": "channelId"
+            },
+            {
+                "type": "JSON",
+                "header": "Thread Timestamp",
+                "path": "thread_ts"
+            },
+            {
+                "type": "JSON",
+                "header": "Name",
+                "path": "text"
+            },
+            {
+                "type": "JSON",
+                "header": "Reaction Names",
+                "path": "reactions[*].name"
+            },
+            {
+                "type": "JSON",
+                "header": "Reaction Counts",
+                "path": "reactions[*].count"
+            },
+            {
+                "type": "JSON",
+                "header": "Reply Timestamps",
+                "path": "replies[*].ts"
+            },
+            {
+                "type": "JSON",
+                "header": "Reply Texts",
+                "path": "replies[*].text"
+            },
+            {
+                "type": "JSON",
+                "header": "Reply Users",
+                "path": "replies[*].user"
+            },
+            {
+                "type": "JSON",
+                "header": "Reply IDs",
+                "path": "replies[*].ts"
+            }
+        ]
     },
-    {
-      "findAndReplace": {
-        "inputHeaders": {
-          "headers": [
-            "Is Pinned"
-          ]
+    "transforms": [
+        {
+            "mergeColumns": {
+                "inputHeaders": [
+                    "Channel ID",
+                    "Timestamp"
+                ],
+                "newColumnHeader": "Message URL",
+                "delimiter": ","
+            }
         },
-        "valueToFind": {
-          "regex": ".+"
+        {
+            "function": {
+                "inputHeaders": {
+                    "headers": [
+                        "Message URL"
+                    ]
+                },
+                "plugin": "slack_createUrls",
+                "function": "createMessageUrl"
+            }
         },
-        "replacement": "true"
-      }
-    },
-    {
-      "findAndReplace": {
-        "inputHeaders": {
-          "headers": [
-            "Is Pinned"
-          ]
+        {
+            "findAndReplace": {
+                "inputHeaders": {
+                    "headers": [
+                        "Is Pinned"
+                    ]
+                },
+                "valueToFind": {
+                    "regex": ".+"
+                },
+                "replacement": "true"
+            }
         },
-        "valueToFind": {
-          "regex": "^$"
+        {
+            "findAndReplace": {
+                "inputHeaders": {
+                    "headers": [
+                        "Is Pinned"
+                    ]
+                },
+                "valueToFind": {
+                    "regex": "^$"
+                },
+                "replacement": "false"
+            }
+        }
+    ],
+    "mappings": [
+        {
+            "field": "slack_messageURL",
+            "header": "Message URL",
+            "subfieldPath": []
         },
-        "replacement": "false"
-      }
+        {
+            "field": "slack_linkedUser",
+            "header": "User",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_slackChannel",
+            "header": "Channel ID",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_reactions",
+            "header": "Reaction Counts",
+            "subfieldPath": [
+                {
+                    "name": "count"
+                }
+            ]
+        },
+        {
+            "field": "slack_reactions",
+            "header": "Reaction Names",
+            "subfieldPath": [
+                {
+                    "name": "reactionName"
+                }
+            ]
+        },
+        {
+            "field": "slack_messageText",
+            "header": "Message Text",
+            "subfieldPath": [
+                {
+                    "name": "markdown"
+                }
+            ]
+        },
+        {
+            "field": "slack_messageTimestamp",
+            "header": "Timestamp",
+            "subfieldPath": []
+        },
+        {
+            "field": "entityId",
+            "header": "Message ID",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_isPinned",
+            "header": "Is Pinned",
+            "subfieldPath": []
+        },
+        {
+            "field": "name",
+            "header": "Name",
+            "subfieldPath": []
+        },
+        {
+            "field": "slack_messages",
+            "header": "Reply Timestamps",
+            "subfieldPath": [
+                {
+                    "name": "timestamp"
+                }
+            ]
+        },
+        {
+            "field": "slack_messages",
+            "header": "Reply Texts",
+            "subfieldPath": [
+                {
+                    "name": "messageText"
+                }
+            ]
+        },
+        {
+            "field": "slack_messages",
+            "header": "Reply Users",
+            "subfieldPath": [
+                {
+                    "name": "linkedUser"
+                }
+            ]
+        },
+        {
+            "field": "slack_messages",
+            "header": "Reply IDs",
+            "subfieldPath": [
+                {
+                    "name": "messageID"
+                }
+            ]
+        }
+    ],
+    "comprehensiveModeConfig": {
+        "comprehensiveSet": "ENTITIES_CREATED_BY_THIS_CONNECTOR",
+        "actionOnMissingEntities": "DELETE"
     }
-  ],
-  "mappings": [
-    {
-      "field": "slack_messageURL",
-      "header": "Message URL",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_linkedUser",
-      "header": "User",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_slackChannel",
-      "header": "Channel ID",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_reactions",
-      "header": "Reaction Counts",
-      "subfieldPath": [
-        {
-          "name": "count"
-        }
-      ]
-    },
-    {
-      "field": "slack_reactions",
-      "header": "Reaction Names",
-      "subfieldPath": [
-        {
-          "name": "reactionName"
-        }
-      ]
-    },
-    {
-      "field": "slack_messageText",
-      "header": "Message Text",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_messageTimestamp",
-      "header": "Timestamp",
-      "subfieldPath": []
-    },
-    {
-      "field": "entityId",
-      "header": "Message ID",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_isPinned",
-      "header": "Is Pinned",
-      "subfieldPath": []
-    },
-    {
-      "field": "name",
-      "header": "Name",
-      "subfieldPath": []
-    },
-    {
-      "field": "slack_messages",
-      "header": "Reply Timestamps",
-      "subfieldPath": [
-        {
-          "name": "timestamp"
-        }
-      ]
-    },
-    {
-      "field": "slack_messages",
-      "header": "Reply Texts",
-      "subfieldPath": [
-        {
-          "name": "messageText"
-        }
-      ]
-    },
-    {
-      "field": "slack_messages",
-      "header": "Reply Users",
-      "subfieldPath": [
-        {
-          "name": "linkedUser"
-        }
-      ]
-    },
-    {
-      "field": "slack_messages",
-      "header": "Reply IDs",
-      "subfieldPath": [
-        {
-          "name": "messageID"
-        }
-      ]
-    }
-  ]
 }
