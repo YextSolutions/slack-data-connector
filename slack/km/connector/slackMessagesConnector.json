@@ -184,9 +184,6 @@
             "subfieldPath": [
                 {
                     "name":"messageText"
-                },
-                {
-                    "name": "markdown"
                 }
             ]
         },
