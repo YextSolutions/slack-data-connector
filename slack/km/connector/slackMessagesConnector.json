@@ -183,7 +183,7 @@
             "header": "Message Text",
             "subfieldPath": [
                 {
-                    "name":"messageText"
+                    "name":"markdown"
                 }
             ]
         },
